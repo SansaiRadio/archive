@@ -5,8 +5,10 @@ $(function(){
 		fileList = filemanager.find('.data');
 
 	// Start by fetching the file data from scan.php with an AJAX request
-
-	$.get('scan.php', function(data) {
+	getScanPhpData("scan.php?sort=asc");
+	
+	function getScanPhpData(scanfile){
+	$.get(scanfile, function(data) {
 
 		var response = [data],
 			currentPath = '',
@@ -313,7 +315,7 @@ $(function(){
 					}
 					
 					if (imageExists(iconpath)) {
-						icon = '<div style="display:inline-block;margin:5px 5px 5px 5px;border-radius:8px;width:100px;height:100px;background-position: center center;background-size: cover; background-repeat:no-repeat;background-image: url(\'' +iconpath + '\');"></div>';
+						icon = '<div style="display:inline-block;margin:9px 9px 9px 9px;border-radius:8px;width:100px;height:100px;background-position: center center;background-size: cover; background-repeat:no-repeat;background-image: url(\'' +iconpath + '\');"></div>';
 					} else if(itemsLength) {
 						icon = '<span class="icon folder full"></span>';
 					}
@@ -335,6 +337,12 @@ $(function(){
 					
 				});
 
+				if(selected_view == 0){
+					switch_view_block();
+				} else {
+					switch_view_list();
+				}
+				
 			}
 
 			if(scannedFiles.length) {
@@ -383,6 +391,12 @@ $(function(){
 					
 					file.appendTo(fileList);
 				});
+				
+				if(selected_view == 0){
+					switch_view_block();
+				} else {
+					switch_view_list();
+				}
 
 			}
 
@@ -443,6 +457,46 @@ $(function(){
 			var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
 			return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 		}
-
+		
+	});
+	}
+	var selected_view = 0;
+	var selected_order = 0;
+	$("#view_button").click(function(e){
+		e.preventDefault();
+		if(selected_view == 0){
+			switch_view_list();
+		} else {
+			switch_view_block();
+		}
+	});
+	function switch_view_list(){
+		$(".filemanager .data li").css({"width": "calc(100% - 20px)", "height": "50px", "margin": "2px 10px"}).addClass("view_clear_background");
+		$(".filemanager .data li .folders div:nth-child(1)").css({"width": "40px", "height": "40px"});
+		$(".filemanager .data li .folders span.icon").css("font-size", "10px");
+		$(".filemanager .data li .files span.icon").addClass("list_view_file_icon");
+		$(".filemanager .data li .name").css("top", "8px");
+		$(".filemanager .data li .details").css("top", "28px");
+		selected_view = 1;
+	}
+	function switch_view_block(){
+		$(".filemanager .data li").css({"width": "307px", "height": "118px", "margin": "10px"}).removeClass("view_clear_background");
+		$(".filemanager .data li .folders div:nth-child(1)").css({"width": "100px", "height": "100px"});
+		$(".filemanager .data li .folders span.icon").css("font-size", "23px");
+		$(".filemanager .data li .files span.icon").removeClass("list_view_file_icon");
+		$(".filemanager .data li .files span.icon.file:after").css("top", "-34.5px");
+		$(".filemanager .data li .name").css("top", "40px");
+		$(".filemanager .data li .details").css("top", "64px");
+		selected_view = 0;	
+	}
+	$("#order_button").click(function(e){
+		e.preventDefault();
+		if(selected_order == 0){
+			getScanPhpData("scan.php?sort=desc");
+			selected_order = 1;
+		} else {
+			getScanPhpData("scan.php?sort=asc");
+			selected_order = 0;
+		}
 	});
 });

@@ -1,4 +1,4 @@
-@charset "utf-8";
+@charset "utf-8","EUC-KR","EUC-JP";
 
 
 /*-------------------------
@@ -21,7 +21,7 @@ html {
 	/* The image used */
     background-image: url("../../images/background.jpg");
     
-    background-color: #373743;
+    background-color: #1e1e1e;
     /* Center and scale the image nicely */
     background-position: center center;
     background-repeat: no-repeat;
@@ -58,7 +58,7 @@ html {
 
 
 .filemanager .breadcrumbs {
-	color: #ffffff;
+	color: #e8e8e8;
 	margin-left:20px;
 	font-size: 13px;
 	font-weight: 700;
@@ -66,7 +66,7 @@ html {
 }
 
 .filemanager .breadcrumbs a:link, .breadcrumbs a:visited {
-	color: #ffffff;
+	color: #e8e8e8;
 	text-decoration: none;
 }
 
@@ -93,7 +93,7 @@ html {
 	cursor: pointer;
 	right: 0;
 	font-size: 17px;
-	color: #ffffff;
+	color: #e8e8e8;
 	display: block;
 	width: 40px;
 	height: 40px;
@@ -106,7 +106,7 @@ html {
 	width: 10px;
 	height: 11px;
 	border-radius: 50%;
-	border: 2px solid #ffffff;
+	border: 2px solid #e8e8e8;
 	right: 8px;
 }
 
@@ -114,7 +114,7 @@ html {
 	content: '';
 	width: 3px;
 	height: 10px;
-	background-color: #ffffff;
+	background-color: #e8e8e8;
 	border-radius: 2px;
 	position: absolute;
 	top: 23px;
@@ -125,13 +125,13 @@ html {
 
 .filemanager .search input[type=search] {
 	border-radius: 2px;
-	color: #4D535E;
-	background-color: #FFF;
+	color: #a1d2c4;
+	background-color: #3f3f3f;
 	width: 250px;
 	height: 44px;
 	margin-left: -215px;
 	padding-left: 20px;
-	text-decoration-color: #4d535e;
+	text-decoration-color: #a1d2c4;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 20px;
@@ -143,18 +143,18 @@ html {
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-	color:    #4d535e;
+	color:    #a1d2c4;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	color:    #4d535e;
+	color:    #a1d2c4;
 	opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-	color:    #4d535e;
+	color:    #a1d2c4;
 	opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-	color:    #4d535e;
+	color:    #a1d2c4;
 }
 
 
@@ -174,7 +174,7 @@ html {
 
 .filemanager .data li {
 	border-radius: 3px;
-	background-color: #373743;
+	background-color: #3f3f3f;
 	width: 307px;
 	height: 118px;
 	list-style-type: none;
@@ -190,7 +190,7 @@ html {
 }
 
 .filemanager .data li:hover {
-	background-color: #42424E;
+	background-color: #353535;
 }
 
 .filemanager .data li a {
@@ -202,11 +202,11 @@ html {
 }
 
 .filemanager .data li .name {
-	color: #ffffff;
+	color: #e8e8e8;
 	font-size: 15px;
 	font-weight: 700;
 	line-height: 20px;
-	width: 150px;
+	width: 1000px;
 	white-space: nowrap;
 	display: inline-block;
 	position: absolute;
@@ -228,7 +228,7 @@ html {
 }
 
 .filemanager .nothingfound {
-	background-color: #373743;
+	background-color: #3f3f3f;
 	border-radius: 10px;
 	width: 23em;
 	height: 21em;
@@ -252,7 +252,7 @@ html {
 .filemanager .nothingfound .nofiles:after {
 	content: '×';
 	position: absolute;
-	color: #ffffff;
+	color: #e8e8e8;
 	font-size: 14em;
 	margin-right: 0.092em;
 	right: 0;
@@ -260,7 +260,7 @@ html {
 
 .filemanager .nothingfound span {
 	margin: 0 auto auto 6.8em;
-	color: #ffffff;
+	color: #e8e8e8;
 	font-size: 16px;
 	font-weight: 700;
 	line-height: 20px;
@@ -277,6 +277,7 @@ html {
 	}
 
 }
+
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes showSlowlyElement {
@@ -336,7 +337,7 @@ html {
 }
 .icon.folder.full:after {
 	height: 2.15em;
-	box-shadow: 0 -0.12em 0 0 #ffffff;
+	box-shadow: 0 -0.12em 0 0 #e8e8e8;
 }
 
 .icon.file {
@@ -624,7 +625,7 @@ footer #tzine-actions iframe{
 }
 
 .button {
-    background-color: #373743; 
+    background-color: #3f3f3f; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -643,9 +644,20 @@ footer #tzine-actions iframe{
 }
 
 .button:hover {
-	background-color: #42424E;
+	background-color: #353535;
 }
 
 .fancybox-content {
 	min-height: 700px;
+}
+
+/* View and Order buttons */
+#list_buttons_container{ margin: 0 auto; text-align: right; }
+#view_button, #order_button{ width: 120px; margin-top:0; }
+.view_clear_background{ background-color: transparent !important; }
+.view_clear_background:hover{ background-color: #353535 !important; }
+.list_view_file_icon{ font-size: 10px; }
+.list_view_file_icon:after{ top: -13.5px !important; }
+@media all and (max-width: 767px){
+	#list_buttons_container{ margin-top: 60px; text-align: center; }
 }

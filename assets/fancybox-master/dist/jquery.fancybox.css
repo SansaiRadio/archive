@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "utf-8","EUC-KR","EUC-JP";
 body.fancybox-active {
   overflow: hidden; }
 

@@ -1,6 +1,6 @@
 <?php
 
-$dir = "Home";
+$dir = "Main";
 
 // Run the recursive function 
 
@@ -11,13 +11,16 @@ $response = scan($dir);
 
 function scan($dir){
 
+	$sort_order = 0;
+	if(isset($_GET['sort']) && $_GET['sort'] == "desc") $sort_order = 1;
+
 	$files = array();
 
 	// Is there actually such a folder/file?
 
 	if(file_exists($dir)){
 	
-		foreach(scandir($dir) as $f) {
+		foreach(scandir($dir, $sort_order) as $f) {
 		
 			if(!$f || $f[0] == '.') {
 				continue; // Ignore hidden files
